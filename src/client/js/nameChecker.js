@@ -1,16 +1,14 @@
-function checkForName(inputText) {
-    console.log("::: Running checkForName :::", inputText);
-    let names = [
-        "Picard",
-        "Janeway",
-        "Kirk",
-        "Archer",
-        "Georgiou"
-    ]
-
-    if(names.includes(inputText)) {
-        alert("Welcome, Captain!")
+function checkInput(inputText) {
+    console.log("::: Running checkInput :::", inputText);
+    if (isEmptyOrSpaces(inputText)) {
+        alert("Please enter a valid input");
+        return false;
     }
+    return true;
 }
 
-export { checkForName }
+function isEmptyOrSpaces(str) {
+    return str === null || str.match(/^ *$/) !== null;
+}
+
+export { checkInput }

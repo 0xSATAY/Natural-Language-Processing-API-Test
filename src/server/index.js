@@ -17,8 +17,8 @@ app.use(bodyParser.json());
 app.use(express.static('dist'))
 console.log(__dirname)
 
-API_ID = process.env.API_ID;
-API_KEY = process.env.API_KEY;
+const API_ID = process.env.API_ID;
+const API_KEY = process.env.API_KEY;
 
 
 const textapi = new AYLIENTextAPI({
@@ -37,7 +37,7 @@ app.listen(8081, function() {
     console.log('Example app listening on port 8081!')
 })
 
-app.post('/test', function(req, res) {
+app.get('/test', function(req, res) {
     res.send(mockAPIResponse)
 })
 
@@ -51,3 +51,6 @@ app.post("/sentiment", (req, res) => {
         res.json(data);
     });
 });
+
+
+module.exports = app;
