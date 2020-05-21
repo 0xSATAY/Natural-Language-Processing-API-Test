@@ -1,14 +1,11 @@
 import { checkInput } from './nameChecker';
 
-const validUrl = require('valid-url');
-
 function handleSubmit(event) {
     event.preventDefault()
 
     // check what text was put into the form field
-    let input = document.getElementById('name').value;
-    let formText = `https://api.aylien.com/news/stories?title="${input}"`;
-    if (checkInput(input)) {
+    let formText = document.getElementById('name').value;
+    if (checkInput(formText)) {
         console.log("::: Form Submitted :::")
         fetch('/sentiment', {
                 method: "POST",
@@ -18,7 +15,12 @@ function handleSubmit(event) {
             })
             .then(res => res.json())
             .then(function(res) {
-                document.getElementById('results').innerHTML = res.message
+                const data = res.data;
+                document.getElementById('polarity').innerHTML = data.polarity;
+                document.getElementById('polarity_confidence').innerHTML = data.polarity_confidence.toFixed(2);
+                document.getElementById('subjectivity').innerHTML = data.subjectivity;
+                document.getElementById('subjectivity_confidence').innerHTML = data.subjectivity_confidence;
+                document.getElementById('text').innerHTML = data.text;
             })
     }
 }
