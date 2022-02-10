@@ -35,7 +35,7 @@
         "jasmine-expect": "^4.0.3",
         "jasmine-matchers": "^0.2.3",
         "jest": "^26.0.1",
-        "node-sass": "^4.14.1",
+        "node-sass": "^7.0.0",
         "sass-loader": "^8.0.2",
         "style-loader": "^1.2.1",
         "supertest": "^4.0.2",
